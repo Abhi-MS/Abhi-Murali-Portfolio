@@ -110,3 +110,24 @@ header{
 #projects{
     margin-bottom: 10%;
 }
+.ftr{
+    background-color: #171A29;
+    min-width: 100%;
+    margin: 0px;
+}
+@media only screen and (max-width: 600px) {
+    #bg{
+        opacity: 0%;
+    }
+    .clck{
+        width: 100%;
+        padding: 0px;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    .photo{
+        max-width: 50%;
+        margin-top: 3rem;
+        margin-left: 1rem;
+    }
+  }
