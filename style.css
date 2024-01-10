@@ -1,30 +1,63 @@
-html,body{
+/* Reset */
+html, body {
     overflow-x: hidden;
-}
-.txt{
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: bolder;
-    font-size: 1rem;
+    margin: 0;
+    padding: 0;
 }
 
-.photo{
+/* Typography */
+.txt,
+h1, h2,
+p, h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: lighter;
+    color: #F6F4F1;
+}
+
+.txt {
+    font-weight: bolder;
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    letter-spacing: 1rem;
+    font-weight: lighter;
+}
+
+h2 {
+    margin: 10% auto;
+    text-align: center;
+    font-weight: bolder;
+}
+
+p, h3 {
+    line-height: 1.5;
+}
+
+/* Buttons & Elements */
+.photo {
     border-radius: 50%;
 }
-.bton{
-    background-color:#c8925c;
+
+.bton {
+    background-color: #c8925c;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     text-decoration: none;
-    color: black;   
+    color: black;
     position: relative;
     overflow: hidden;
     font-family: 'Cormorant Garamond', serif;
 }
-.bton span{
+
+.bton span {
     position: relative;
     z-index: 1;
 }
-.bton::before{
+
+.bton::before {
     content: "";
     position: absolute;
     background-color: orange;
@@ -35,148 +68,112 @@ html,body{
     transform: translate(-50%,-50%);
     border-radius: 50%;
     transition: width 0.5s, height 0.5s;
-
 }
 
-.bton:hover::before{
+.bton:hover::before {
     width: 300px;
     height: 300px;
 }
-h1 , h2{
-    color: #F6F4F1;
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 1rem;
-    font-weight: lighter;
-}
-h2{
-    margin: 10%;
-    margin-top: 10%;
-    text-align: center;
-    font-weight: bolder;
-}
-p, h3{
-    color: #F6F4F1;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: lighter;
-}
-section{
+
+/* Sections & Areas */
+section {
     min-height: 100vh;
+    padding: 0;
 }
-.sc{
+
+.sc {
     background-color: #171A29;
 }
-#bg{
+
+#bg {
     position: fixed;
     z-index: -1;
-    width: 100%;
     opacity: 80%;
+    height: 100vh;
+    scale: 140%;
 }
-header{
+
+header {
     width: 100%;
     position: fixed;
     z-index: 1;
-    background-color: #171A29;
+    background-color: transparent;
 }
 
-#about{
+#about {
     min-height: 100%;
 }
 
-#tabt{
+#tabt {
     background-color: #171A29;
     opacity: 80%;
     padding: 10%;
     min-height: 100vh;
-
-} */
-#abhipic{
-    display: flex;
-    justify-content:flex-end;
-    align-items: flex-start;
-
 }
-#contact>div{
+
+#abhipic {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+#contact > div {
     background-color: #171A29;
     height: 100vh;
     width: 100%;
     padding: 15%;
 }
-.fbox{
+
+.fbox {
     display: flex;
     justify-content: center;
 }
-.fbox p{
+
+.fbox p {
     text-align: center;
 }
-#projects{
+
+#projects {
     margin-bottom: 10%;
     width: 50%;
     margin: auto;
     min-width: 400px;
 }
-.ftr{
+
+.ftr {
     background-color: #171A29;
     min-width: 100%;
-    margin: 0px;
-}
-@media only screen and (max-width: 600px) {
-    #bg{
-        opacity: 0%;
-    }
-    .clck{
-        width: 100%;
-        padding: 0px;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-    }
-    .photo{
-        max-width: 50%;
-        margin-top: 30%;
-        margin-left: 1rem;
-    }
-    h1{
-        font-size: 2rem !important;
-    }
-    .para{
-        font-size: 1rem !important;
-        margin: 1rem;
-    }
-  }
-
-  /* Animated background */
-
-  @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
-
-*{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
 }
 
+/* Animated Background */
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 
+* {
+    margin: 0;
+    padding: 0;
+}
 
 .context {
     width: 100%;
     position: absolute;
-    top:10vh;
-    
+    top: 0vh;
+    padding-top: 3rem;
 }
 
-.context h1{
+.context h1 {
     color: #fff;
     font-size: 50px;
 }
 
-
-.area{
-    background: #171A29;  
-    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+.area {
+    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+    background: #171A29;
     width: 100%;
-    height:100vh;
-    
-   
+    height: 100vh;
 }
 
-.circles{
+.circles {
     position: absolute;
     top: 0;
     left: 0;
@@ -185,7 +182,7 @@ header{
     overflow: hidden;
 }
 
-.circles li{
+.circles li {
     position: absolute;
     display: block;
     list-style: none;
@@ -194,7 +191,6 @@ header{
     background: rgba(255, 255, 255, 0.2);
     animation: animate 25s linear infinite;
     bottom: -150px;
-    
 }
 
 .circles li:nth-child(1){
@@ -276,17 +272,15 @@ header{
 
 
 @keyframes animate {
-
-    0%{
+    0% {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
         border-radius: 0;
     }
-
-    100%{
+    100% {
         transform: translateY(-1000px) rotate(720deg);
         opacity: 0;
         border-radius: 50%;
     }
-
 }
+
