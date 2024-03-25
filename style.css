@@ -124,6 +124,11 @@ header {
     padding: 15%;
 }
 
+#contact {
+    width: 100%;
+    background-color: #171A29;
+}
+
 .fbox {
     display: flex;
     justify-content: center;
@@ -145,6 +150,41 @@ header {
     min-width: 100%;
     margin: 0;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #c8925c;
+}
+
+
+
 
 /* Animated Background */
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
@@ -284,3 +324,8 @@ header {
     }
 }
 
+ @media (max-width: 600px) {
+        .container {
+            margin: 20px;
+        }
+    }
