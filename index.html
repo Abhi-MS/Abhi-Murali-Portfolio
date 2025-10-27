@@ -56,38 +56,40 @@
         </ul>
 </div >
 
-      <!-- Hero -->
-      <section class="herosection context" id="home">
-        <div class="container col-xxl-8 py-5">
-            <div class="row align-items-center g-5 py-5">
-  <!-- Photo (1 part) -->
-  
+  <!-- Hero -->
+  <section class="herosection context" id="home">
+  <div class="container col-xxl-8 py-5">
+    <div class="row align-items-center g-5 py-5">
+      <!-- Text + Buttons (2 parts) -->
+      <div class="col-lg-8 col-md-7">
+        <h1 class="display-5 lh-1 mb-3">ABHI MURALI</h1>
+        <p class="lead para">
+          Hi there! I'm Abhi, a self-taught software engineer and 
+          <a href="https://summerofcode.withgoogle.com/programs/2025/projects/lXkF8ycI" target="_blank">Google Summer of Code 2025</a> contributor.
+          I love building web applications that are both functional and visually engaging. With knowledge in HTML, CSS, JavaScript, TypeScript, React, Next.js, Node.js, and Tailwind CSS, 
+          I focus on creating scalable, responsive, and maintainable solutions — all while keeping the user experience front and center.
+        </p>
 
-  <!-- Text + Buttons (2 parts) -->
-  <div class="col-lg-8 col-md-7">
-    <h1 class="display-5 lh-1 mb-3">ABHI MURALI</h1>
-    <p class="lead para">
-  Hi there! I’m Abhi, a self-taught software engineer and Google Summer of Code 2025 contributor. I love building web applications that are both functional and visually engaging. With knowledge in HTML, CSS, JavaScript, TypeScript, React, Next.js, Node.js, and Tailwind CSS, I focus on creating scalable, responsive, and maintainable solutions — all while keeping the user experience front and center.
-</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn primary-btn">
+            <span>Get In Touch</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/abhimurali/" class="btn secondary-btn">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
 
-
-    <div class="hero-buttons">
-      <a href="#contact" class="btn primary-btn">
-        <span>Get In Touch</span>
-        <i class="fas fa-arrow-right"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/abhimurali/" class="btn secondary-btn">
-        <i class="fab fa-linkedin"></i>
-        <span>LinkedIn</span>
-      </a>
+      <!-- Photo (1 part) -->
+      <div class="col-lg-4 col-md-5 col-10 mx-auto photodiv">
+        <img src="./assets/abhi.jpg" class="mx-lg-auto img-fluid photo mt-0" alt="Abhi photo" loading="lazy">
+      </div>
     </div>
   </div>
-  <div class="col-lg-4 col-md-5 col-10 mx-auto photodiv">
-    <img src="./assets/abhi.jpg" class="mx-lg-auto img-fluid photo mt-0" alt="Abhi photo" loading="lazy">
-            </div>
-        </div>
-      </section>
-      
+</section>
+
       <!-- Projects -->
       <section id="projects">
         <br />
@@ -191,7 +193,7 @@
             </div>
             
             <div class="contact-methods">
-              <div class="contact-method">
+              <div class="contact-method" data-action="email" data-url="mailto:abhiramims313@gmail.com">
                 <div class="method-icon">
                   <i class="fas fa-envelope"></i>
                 </div>
@@ -201,7 +203,7 @@
                 </div>
               </div>
               
-              <div class="contact-method">
+              <div class="contact-method" data-action="link" data-url="https://www.linkedin.com/in/abhimurali/">
                 <div class="method-icon">
                   <i class="fab fa-linkedin"></i>
                 </div>
@@ -211,7 +213,7 @@
                 </div>
               </div>
               
-              <div class="contact-method">
+              <div class="contact-method" data-action="link" data-url="https://github.com/Abhi-MS">
                 <div class="method-icon">
                   <i class="fab fa-github"></i>
                 </div>
@@ -346,6 +348,24 @@
 
             // Set initial placeholder state
             selectedText.classList.add('dropdown-placeholder');
+        });
+
+        // Contact method click handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactMethods = document.querySelectorAll('.contact-method');
+            
+            contactMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    const action = this.getAttribute('data-action');
+                    const url = this.getAttribute('data-url');
+                    
+                    if (action === 'email') {
+                        window.location.href = url;
+                    } else if (action === 'link') {
+                        window.open(url, '_blank');
+                    }
+                });
+            });
         });
     </script>
 </body>
