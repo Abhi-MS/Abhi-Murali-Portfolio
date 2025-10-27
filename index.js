@@ -82,3 +82,90 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Contact form submission handler
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.querySelector('.contact-form');
+    const submitButton = document.querySelector('.submit-button');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            
+            // Update button to show loading state
+            const originalButtonContent = submitButton.innerHTML;
+            submitButton.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
+            submitButton.disabled = true;
+            
+            try {
+                // Submit to Formspree
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    showMessage('Message sent successfully! I\'ll get back to you soon.', 'success');
+                    
+                    // Clear the form
+                    contactForm.reset();
+                    
+                    // Reset dropdown to placeholder state
+                    const selectedText = document.querySelector('.selected-text');
+                    const hiddenInput = document.getElementById('subject');
+                    if (selectedText && hiddenInput) {
+                        selectedText.textContent = 'Choose your topic...';
+                        selectedText.classList.add('dropdown-placeholder');
+                        hiddenInput.value = '';
+                    }
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                // Show error message
+                showMessage('Oops! There was a problem sending your message. Please try again.', 'error');
+            } finally {
+                // Restore button
+                submitButton.innerHTML = originalButtonContent;
+                submitButton.disabled = false;
+            }
+        });
+    }
+});
+
+// Function to show success/error messages
+function showMessage(message, type) {
+    // Remove any existing messages
+    const existingMessage = document.querySelector('.form-message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    // Create message element
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `form-message ${type}`;
+    messageDiv.innerHTML = `
+        <div class="message-content">
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    // Insert message before the form
+    const contactForm = document.querySelector('.contact-form');
+    contactForm.parentNode.insertBefore(messageDiv, contactForm);
+    
+    // Auto-remove message after 5 seconds
+    setTimeout(() => {
+        if (messageDiv.parentNode) {
+            messageDiv.remove();
+        }
+    }, 5000);
+}
