@@ -19,20 +19,44 @@
 
     <header class="text-bg-mutedcl" id="head">
         <div class="container">
-          <div class="d-flex navbar flex-wrap align-items-center justify-content-between">    
-            <ul class="nav me-auto mb-2 justify-content-start mb-md-0 hdr">
+            <div class="d-flex flex-row flex-wrap align-items-center justify-content-between">    
+            
+            <!-- Hamburger Menu Button (Mobile) -->
+            <button class="hamburger-btn d-sm-none" id="hamburgerBtn" aria-label="Toggle navigation">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </button>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav me-auto mb-2 justify-content-start mb-md-0 hdr" id="navMenu">
               <li><a href="#projects" class="nav-item nav-link px-2 text-white txt">Projects</a></li>
               <li><a href="#about" class="nav-item nav-link px-2 text-white txt">About</a></li>
               <li><a href="#contact" class="nav-item nav-link px-2 text-white txt">Contact</a></li>
             </ul>
-            <div class="home-icon-container">
+            
+            <div class="home-icon-container d-none d-sm-flex">
               <a href="#home" class="nav-item nav-link home-icon txt" title="Home">
-                <i class="fas fa-home"></i>
+              <i class="fas fa-home"></i>
               </a>
             </div>
-          </div>
+            </div>
         </div>
       </header>
+
+      <!-- Mobile Navigation Overlay -->
+      <div class="nav-overlay" id="navOverlay">
+        <!-- Close Button -->
+        <button class="nav-close-btn" id="navCloseBtn" aria-label="Close navigation">
+          <i class="fas fa-times"></i>
+        </button>
+        <ul class="nav">
+          <li><a href="#home" class="nav-item nav-link text-white txt" onclick="closeNavMenu()">Home</a></li>
+          <li><a href="#projects" class="nav-item nav-link text-white txt" onclick="closeNavMenu()">Projects</a></li>
+          <li><a href="#about" class="nav-item nav-link text-white txt" onclick="closeNavMenu()">About</a></li>
+          <li><a href="#contact" class="nav-item nav-link text-white txt" onclick="closeNavMenu()">Contact</a></li>
+        </ul>
+      </div>
 
       <!-- Animated background -->
       <div class="area" >
@@ -59,7 +83,7 @@
   <!-- Hero -->
   <section class="herosection context" id="home">
   <div class="container col-xxl-8 py-5">
-    <div class="row align-items-center g-5 py-5">
+    <div class="row align-items-center g-5 py-3">
       <!-- Text + Buttons (2 parts) -->
       <div class="col-lg-8 col-md-7">
         <h1 class="display-5 lh-1 mb-3">ABHI MURALI</h1>
@@ -83,7 +107,7 @@
       </div>
 
       <!-- Photo (1 part) -->
-      <div class="col-lg-4 col-md-5 col-10 mx-auto photodiv">
+      <div class="col-lg-4 col-md-5 col-10 mx-auto photodiv d-none d-sm-block">
         <img src="./assets/abhi.jpg" class="mx-lg-auto img-fluid photo mt-0" alt="Abhi photo" loading="lazy">
       </div>
     </div>
