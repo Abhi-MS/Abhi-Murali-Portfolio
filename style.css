@@ -740,7 +740,6 @@ header.scrolled {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 100px 0;
 }
 
 /* Make sure animated background is visible in blue sections */
@@ -1984,7 +1983,7 @@ header.scrolled {
 .ftr {
     background: #171A29;
     min-width: 100%;
-    margin: 0;
+    margin: 0 !important;
     border-top: 2px solid rgba(200, 146, 92, 0.3);
     position: relative;
 }
