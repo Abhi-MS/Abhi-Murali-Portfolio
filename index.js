@@ -224,3 +224,142 @@ function closeNavMenu() {
     navOverlay.classList.remove('active');
     body.classList.remove('nav-open');
 }
+
+// Mobile Projects Carousel Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('mobileProjectsTrack');
+    const prevBtn = document.getElementById('mobilePrevBtn');
+    const nextBtn = document.getElementById('mobileNextBtn');
+    const dots = document.querySelectorAll('.mobile-carousel-dot');
+    
+    if (!track || !prevBtn || !nextBtn) return;
+    
+    let currentSlide = 0;
+    const totalSlides = document.querySelectorAll('.mobile-project-card').length;
+    
+    function updateCarousel() {
+        const cards = document.querySelectorAll('.mobile-project-card');
+        if (cards.length === 0) return;
+        
+        const container = document.querySelector('.mobile-projects-carousel');
+        const containerWidth = container.offsetWidth;
+        const cardElement = cards[0];
+        const cardWidth = cardElement.offsetWidth;
+        const cardMargin = 20; // margin on each side
+        const totalCardWidth = cardWidth + (cardMargin * 2);
+        
+        // Simple centering: offset to center first card, then move by slide amount
+        const centerOffset = (containerWidth - cardWidth) / 2 - cardMargin;
+        const translateX = centerOffset - (currentSlide * totalCardWidth);
+        
+        console.log('Container width:', containerWidth);
+        console.log('Card width:', cardWidth);
+        console.log('Center offset:', centerOffset);
+        console.log('Current slide:', currentSlide);
+        console.log('Translate X:', translateX);
+        
+        track.style.transform = `translateX(${translateX}px)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+        
+        // Update button states
+        prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
+        nextBtn.style.opacity = currentSlide === totalSlides - 1 ? '0.5' : '1';
+    }
+    
+    function nextSlide() {
+        if (currentSlide < totalSlides - 1) {
+            currentSlide++;
+            updateCarousel();
+        }
+    }
+    
+    function prevSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateCarousel();
+        }
+    }
+    
+    function goToSlide(slideIndex) {
+        if (slideIndex >= 0 && slideIndex < totalSlides) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+    }
+    
+    // Event listeners
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+    });
+    
+    // Touch/swipe support
+    let startX = 0;
+    let isDragging = false;
+    
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+    });
+    
+    track.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+    });
+    
+    track.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+    });
+    
+    // Auto-play (optional)
+    let autoPlayInterval;
+    
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+            if (currentSlide === totalSlides - 1) {
+                currentSlide = 0;
+            } else {
+                currentSlide++;
+            }
+            updateCarousel();
+        }, 4000);
+    }
+    
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+    
+    // Start auto-play
+    startAutoPlay();
+    
+    // Pause on hover/touch
+    track.addEventListener('mouseenter', stopAutoPlay);
+    track.addEventListener('mouseleave', startAutoPlay);
+    track.addEventListener('touchstart', stopAutoPlay);
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        setTimeout(updateCarousel, 50);
+    });
+    
+    // Initialize with small delay to ensure DOM is ready
+    setTimeout(updateCarousel, 100);
+});

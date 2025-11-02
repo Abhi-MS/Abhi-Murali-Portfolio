@@ -118,8 +118,9 @@
       <section id="projects">
         <br />
         <h2 id="projectlink">PROJECTS</h2>
-
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-interval="5000">
+        
+        <div class="carousel-container">
+          <div id="carouselExampleCaptions" class="carousel slide" data-bs-interval="5000">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -183,6 +184,158 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
+          </div>
+        </div>
+        
+        <!-- Modern Mobile Projects Carousel (Hidden on larger screens) -->
+        <div class="mobile-projects-carousel d-block d-sm-none">
+          <div class="mobile-projects-track" id="mobileProjectsTrack">
+          <a href="https://abhi-ms.github.io/gymApp/" class="mobile-project-card">
+            <div class="mobile-project-header">
+              <div class="mobile-project-image">
+                <img src="assets/Project1.png" alt="Reptrack" loading="lazy">
+              </div>
+              <div class="mobile-project-header-info">
+                <h3 class="mobile-project-title">Reptrack</h3>
+                <p class="mobile-project-tech">React.js • State Management • React Routing</p>
+              </div>
+              <span class="mobile-project-arrow">→</span>
+            </div>
+            <div class="mobile-project-main-image">
+              <img src="assets/Project1.png" alt="Reptrack App Interface" loading="lazy">
+            </div>
+            <p class="mobile-project-description">A React App to track fitness progress with interactive charts and workout logging.</p>
+            <div class="mobile-project-features">
+              <span class="mobile-project-tag">Fitness</span>
+              <span class="mobile-project-tag">Progress Tracking</span>
+              <span class="mobile-project-tag">React</span>
+            </div>
+          </a>
+          
+          <a href="https://abhi-ms.github.io/photography/" class="mobile-project-card">
+            <div class="mobile-project-header">
+              <div class="mobile-project-image">
+                <img src="assets/Project2.png" alt="Photography Portfolio" loading="lazy">
+              </div>
+              <div class="mobile-project-header-info">
+                <h3 class="mobile-project-title">Photography</h3>
+                <p class="mobile-project-tech">React.js • Bootstrap • CSS Grid</p>
+              </div>
+              <span class="mobile-project-arrow">→</span>
+            </div>
+            <div class="mobile-project-main-image">
+              <img src="assets/Project2.png" alt="Photography Portfolio Interface" loading="lazy">
+            </div>
+            <p class="mobile-project-description">A sleek, responsive photography portfolio showcasing creative work with elegant galleries.</p>
+            <div class="mobile-project-features">
+              <span class="mobile-project-tag">Portfolio</span>
+              <span class="mobile-project-tag">Gallery</span>
+              <span class="mobile-project-tag">Responsive</span>
+            </div>
+          </a>
+          
+          <a href="https://todoappforeveryday.onrender.com/" class="mobile-project-card">
+            <div class="mobile-project-header">
+              <div class="mobile-project-image">
+                <img src="assets/Project3.png" alt="Todo Full-Stack App" loading="lazy">
+              </div>
+              <div class="mobile-project-header-info">
+                <h3 class="mobile-project-title">Todo Full-Stack</h3>
+                <p class="mobile-project-tech">Node.js • MongoDB • Express.js • EJS</p>
+              </div>
+              <span class="mobile-project-arrow">→</span>
+            </div>
+            <div class="mobile-project-main-image">
+              <img src="assets/Project3.png" alt="Todo App Dashboard" loading="lazy">
+            </div>
+            <p class="mobile-project-description">A full-stack todo application with user authentication and data persistence.</p>
+            <div class="mobile-project-features">
+              <span class="mobile-project-tag">Full-Stack</span>
+              <span class="mobile-project-tag">Database</span>
+              <span class="mobile-project-tag">CRUD</span>
+            </div>
+          </a>
+          
+          <a href="https://abhi-ms.github.io/todoreact//" class="mobile-project-card">
+            <div class="mobile-project-header">
+              <div class="mobile-project-image">
+                <img src="assets/Project4.png" alt="React Todo App" loading="lazy">
+              </div>
+              <div class="mobile-project-header-info">
+                <h3 class="mobile-project-title">React Todo</h3>
+                <p class="mobile-project-tech">React.js • Hooks • Local Storage</p>
+              </div>
+              <span class="mobile-project-arrow">→</span>
+            </div>
+            <div class="mobile-project-main-image">
+              <img src="assets/Project4.png" alt="React Todo Interface" loading="lazy">
+            </div>
+            <p class="mobile-project-description">Minimal design todo list app built with React featuring clean UI and smooth interactions.</p>
+            <div class="mobile-project-features">
+              <span class="mobile-project-tag">Minimal</span>
+              <span class="mobile-project-tag">React Hooks</span>
+              <span class="mobile-project-tag">Clean UI</span>
+            </div>
+          </a>
+          
+          <a href="https://abhi-ms.github.io/Website-for-a-dental-clinic/" class="mobile-project-card">
+            <div class="mobile-project-header">
+              <div class="mobile-project-image">
+                <img src="assets/Project5.png" alt="Dental Clinic Website" loading="lazy">
+              </div>
+              <div class="mobile-project-header-info">
+                <h3 class="mobile-project-title">Dental Clinic</h3>
+                <p class="mobile-project-tech">HTML5 • CSS3 • JavaScript • Responsive</p>
+              </div>
+              <span class="mobile-project-arrow">→</span>
+            </div>
+            <div class="mobile-project-main-image">
+              <img src="assets/Project5.png" alt="Dental Clinic Homepage" loading="lazy">
+            </div>
+            <p class="mobile-project-description">Professional single-page website for RR Dental Clinic with modern design and animations.</p>
+            <div class="mobile-project-features">
+              <span class="mobile-project-tag">Healthcare</span>
+              <span class="mobile-project-tag">Business</span>
+              <span class="mobile-project-tag">Animations</span>
+            </div>
+          </a>
+          
+          <a href="https://github.com/Abhi-MS/aNewsADay" class="mobile-project-card">
+            <div class="mobile-project-header">
+              <div class="mobile-project-image">
+                <img src="assets/Project6.png" alt="News App" loading="lazy">
+              </div>
+              <div class="mobile-project-header-info">
+                <h3 class="mobile-project-title">News Daily</h3>
+                <p class="mobile-project-tech">JavaScript • News API • Fetch API</p>
+              </div>
+              <span class="mobile-project-arrow">→</span>
+            </div>
+            <div class="mobile-project-main-image">
+              <img src="assets/Project6.png" alt="News App Interface" loading="lazy">
+            </div>
+            <p class="mobile-project-description">Web application displaying random daily news from around the world using News API.</p>
+            <div class="mobile-project-features">
+              <span class="mobile-project-tag">News API</span>
+              <span class="mobile-project-tag">Daily Updates</span>
+              <span class="mobile-project-tag">Vanilla JS</span>
+            </div>
+          </a>
+          </div>
+          
+          <!-- Carousel Navigation -->
+          <button class="mobile-carousel-controls mobile-carousel-prev" id="mobilePrevBtn">‹</button>
+          <button class="mobile-carousel-controls mobile-carousel-next" id="mobileNextBtn">›</button>
+          
+          <!-- Carousel Dots -->
+          <div class="mobile-carousel-nav" id="mobileCarouselDots">
+            <span class="mobile-carousel-dot active" data-slide="0"></span>
+            <span class="mobile-carousel-dot" data-slide="1"></span>
+            <span class="mobile-carousel-dot" data-slide="2"></span>
+            <span class="mobile-carousel-dot" data-slide="3"></span>
+            <span class="mobile-carousel-dot" data-slide="4"></span>
+            <span class="mobile-carousel-dot" data-slide="5"></span>
+          </div>
         </div>
       </section>
       
