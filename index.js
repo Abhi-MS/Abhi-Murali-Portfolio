@@ -324,17 +324,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let posts = [];
     let currentIndex = 0;
-    let usingFallback = true;
 
     function renderPost(post) {
         slide.replaceChildren();
-
-        if (usingFallback) {
-            const fallbackNotice = document.createElement('p');
-            fallbackNotice.className = 'writing-status';
-            fallbackNotice.textContent = 'Live Hashnode posts are unavailable; showing saved articles.';
-            slide.append(fallbackNotice);
-        }
 
         const heading = document.createElement('h3');
         heading.textContent = post.title;
@@ -342,8 +334,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const metadata = document.createElement('p');
         metadata.className = 'writing-metadata';
 
-        const publicationDate = document.createElement('time');
         if (post.publishedAt && !Number.isNaN(Date.parse(post.publishedAt))) {
+            const publicationDate = document.createElement('time');
             const date = new Date(post.publishedAt);
             publicationDate.dateTime = date.toISOString();
             publicationDate.textContent = date.toLocaleDateString(undefined, {
@@ -351,20 +343,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 month: 'long',
                 day: 'numeric'
             });
-        } else {
-            publicationDate.textContent = 'Date unavailable';
+            metadata.append(publicationDate);
         }
-        metadata.append(publicationDate);
 
         if (Number.isFinite(post.readTimeInMinutes) && post.readTimeInMinutes > 0) {
             const readTime = document.createElement('span');
             readTime.textContent = `${post.readTimeInMinutes} min read`;
-            metadata.append(' · ', readTime);
+            if (metadata.childElementCount > 0) metadata.append(' · ');
+            metadata.append(readTime);
         }
 
         const brief = document.createElement('p');
         brief.className = 'writing-brief';
         brief.textContent = post.brief || 'Read this article on Hashnode.';
+
+        const embed = document.createElement('iframe');
+        embed.className = 'writing-embed';
+        embed.src = post.url;
+        embed.title = `Hashnode article: ${post.title}`;
+        embed.loading = 'lazy';
+        embed.referrerPolicy = 'strict-origin-when-cross-origin';
+
+        const expandButton = document.createElement('button');
+        expandButton.className = 'writing-expand-button';
+        expandButton.type = 'button';
+        expandButton.setAttribute('aria-pressed', 'false');
+        expandButton.textContent = 'Expand article view';
+        expandButton.addEventListener('click', () => {
+            const expanded = embed.classList.toggle('is-expanded');
+            expandButton.setAttribute('aria-pressed', String(expanded));
+            expandButton.textContent = expanded ? 'Collapse article view' : 'Expand article view';
+        });
 
         const link = document.createElement('a');
         link.href = post.url;
@@ -372,7 +381,9 @@ document.addEventListener('DOMContentLoaded', function() {
         link.rel = 'noopener noreferrer';
         link.textContent = 'Read on Hashnode';
 
-        slide.append(heading, metadata, brief, link);
+        slide.append(heading);
+        if (metadata.childElementCount > 0) slide.append(metadata);
+        slide.append(brief, expandButton, embed, link);
         position.textContent = `${currentIndex + 1} of ${posts.length}`;
         previousButton.disabled = posts.length < 2;
         nextButton.disabled = posts.length < 2;
