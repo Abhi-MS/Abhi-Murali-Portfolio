@@ -130,47 +130,39 @@
       <section id="featured-work" class="featured-work-section">
         <div class="container">
           <h2>FEATURED WORK</h2>
-          <div class="featured-work-grid">
-            <article class="featured-card">
-              <p class="featured-eyebrow">Google Summer of Code 2025 · The Palisadoes Foundation</p>
+          <ul class="featured-work-list">
+            <li class="featured-work-item">
               <h3>SwitchMap-NG: Flask to Next.js/GraphQL</h3>
-              <ul class="tag-list" aria-label="Technology stack">
-                <li>Next.js</li>
-                <li>React</li>
-                <li>GraphQL</li>
-                <li>Tailwind</li>
-                <li>Vitest</li>
-                <li>React Testing Library</li>
+              <ul class="featured-details">
+                <li><strong>Context:</strong> Google Summer of Code 2025 with The Palisadoes Foundation; modernized a network monitoring interface.</li>
+                <li><strong>Delivery:</strong> Replaced the Flask UI with Next.js/GraphQL; built lazy-loaded topology visualizations, analytics dashboards, and secure configuration with SNMP v3 support.</li>
+                <li><strong>Stack:</strong> Next.js, React, GraphQL, Tailwind, Vitest, React Testing Library.</li>
+                <li><strong>Results:</strong> Bundle cut by 501 KB via route-based code splitting · LCP 1.7s, FCP 0.2s · test coverage raised to 96%.</li>
               </ul>
-              <p>Replaced a legacy server-rendered Flask UI with a modern Next.js/GraphQL frontend for a network monitoring tool. Built interactive topology visualizations (lazy-loaded vis-network), historical analytics dashboards, and a configuration UI with secure credential handling and SNMP v3 support.</p>
-              <p class="featured-results"><strong>Results:</strong> Bundle cut by 501 KB via route-based code splitting · LCP 1.7s, FCP 0.2s · test coverage raised to 96%.</p>
-              <div class="featured-links">
+              <p class="featured-links">
                 <a href="https://github.com/PalisadoesFoundation/switchmap-ng/discussions/324" target="_blank" rel="noopener noreferrer">Read the final report</a>
-                <a href="https://github.com/Abhi-MS" target="_blank" rel="noopener noreferrer">View the repo</a>
-              </div>
-            </article>
-            <article class="featured-card">
+              </p>
+            </li>
+            <li class="featured-work-item">
               <h3>High-traffic content page migration</h3>
-              <ul class="tag-list" aria-label="Technology stack">
-                <li>React/Redux to Next.js</li>
-                <li>SSR</li>
-                <li>Code splitting</li>
+              <ul class="featured-details">
+                <li><strong>Context:</strong> Migrated a content page serving more than 1M users from React/Redux to Next.js.</li>
+                <li><strong>Delivery:</strong> Used server-side rendering and code splitting; added Google Analytics with 7+ engagement events and a real-time chat feature.</li>
+                <li><strong>Stack:</strong> React/Redux to Next.js, SSR, code splitting.</li>
+                <li><strong>Results:</strong> Lighthouse Performance +70% · LCP -57% · TBT -82%.</li>
               </ul>
-              <p>Migrated a content page serving 1M+ users from React/Redux to Next.js, using server-side rendering and code splitting.</p>
-              <p class="featured-results"><strong>Results:</strong> Lighthouse Performance +70% · LCP -57% · TBT -82%.</p>
-            </article>
-            <article class="featured-card">
+            </li>
+            <li class="featured-work-item">
               <h3>Production FastMCP AI service</h3>
-              <ul class="tag-list" aria-label="Technology stack">
-                <li>Python</li>
-                <li>FastMCP</li>
-                <li>Async/streaming</li>
+              <ul class="featured-details">
+                <li><strong>Context:</strong> Improved asynchronous workflows and streaming pipelines in a production AI service.</li>
+                <li><strong>Delivery:</strong> Designed two database schemas, implemented 10 CRUD and bulk APIs, and added audit logging for an automation system.</li>
+                <li><strong>Stack:</strong> Python, FastMCP, async/streaming.</li>
+                <li><strong>Results:</strong> End-to-end latency -70%.</li>
               </ul>
-              <p>Optimized asynchronous workflows and streaming pipelines in a production AI service.</p>
               <!-- TODO: one sentence on the bottleneck and how I found it -->
-              <p class="featured-results"><strong>Results:</strong> End-to-end latency -70%.</p>
-            </article>
-          </div>
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -288,6 +280,7 @@
             </div>
           </div>
           <a class="writing-all-link" href="https://abhimurali.hashnode.dev/" target="_blank" rel="noopener noreferrer">View all posts</a>
+          <a class="writing-all-link" href="https://abhimurali.hashnode.dev/rss.xml" target="_blank" rel="noopener noreferrer">Subscribe via RSS</a>
         </div>
       </section>
       
