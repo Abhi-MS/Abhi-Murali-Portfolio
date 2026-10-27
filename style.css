@@ -2661,7 +2661,12 @@ textarea {
 
 @media (max-width: 600px) {
     .container {
-        margin: 20px;
+        margin: 20px 0;
+    }
+
+    .herosection .row {
+        margin-left: 0;
+        margin-right: 0;
     }
     
     .carousel-control-prev,
@@ -2880,5 +2885,122 @@ textarea {
 @media (max-width: 640px) {
     .skills-groups {
         grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.writing-section {
+    min-height: auto;
+    padding: 2rem 0 5rem;
+}
+
+.writing-section h2 {
+    margin: 3rem auto;
+}
+
+.writing-carousel {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+    border: 1px solid rgba(200, 146, 92, 0.4);
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(23, 26, 41, 0.96), rgba(200, 146, 92, 0.08));
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+    touch-action: pan-y;
+}
+
+.writing-slide {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-wrap: anywhere;
+}
+
+.writing-status {
+    color: rgba(246, 244, 241, 0.72);
+    font-size: 0.95rem;
+}
+
+.writing-slide h3 {
+    margin-bottom: 0.75rem;
+    color: #e6a876;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    line-height: 1.35;
+}
+
+.writing-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    color: rgba(246, 244, 241, 0.7);
+    font-size: 0.95rem;
+}
+
+.writing-brief {
+    color: rgba(246, 244, 241, 0.9);
+    font-size: 1.1rem;
+}
+
+.writing-slide > a,
+.writing-all-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    align-self: flex-start;
+    color: #f4c49a;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+.writing-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.writing-controls button {
+    min-width: 100px;
+    min-height: 44px;
+    padding: 0.55rem 1rem;
+    border: 1px solid rgba(200, 146, 92, 0.5);
+    border-radius: 999px;
+    background: rgba(200, 146, 92, 0.12);
+    color: #f4c49a;
+    font: inherit;
+    cursor: pointer;
+}
+
+.writing-controls button:hover:not(:disabled) {
+    background: rgba(200, 146, 92, 0.28);
+}
+
+.writing-controls button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.writing-controls span {
+    min-width: 4rem;
+    color: rgba(246, 244, 241, 0.75);
+    text-align: center;
+}
+
+.writing-all-link {
+    display: flex;
+    width: fit-content;
+    margin: 1.25rem auto 0;
+}
+
+@media (max-width: 480px) {
+    .writing-controls {
+        gap: 0.5rem;
+    }
+
+    .writing-controls button {
+        min-width: 88px;
+        padding-inline: 0.7rem;
     }
 }

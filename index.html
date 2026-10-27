@@ -31,7 +31,9 @@
             
             <!-- Navigation Menu -->
             <ul class="nav me-auto mb-2 justify-content-start mb-md-0 hdr" id="navMenu">
+              <li><a href="#featured-work" class="nav-item nav-link px-2 text-white txt">Featured Work</a></li>
               <li><a href="#projects" class="nav-item nav-link px-2 text-white txt">Earlier projects</a></li>
+              <li><a href="#writing" class="nav-item nav-link px-2 text-white txt">Writing</a></li>
               <li><a href="#about" class="nav-item nav-link px-2 text-white txt">About</a></li>
               <li><a href="#contact" class="nav-item nav-link px-2 text-white txt">Contact</a></li>
             </ul>
@@ -53,7 +55,9 @@
         </button>
         <ul class="nav">
           <li><a href="#home" class="nav-item nav-link text-white txt" onclick="closeNavMenu()">Home</a></li>
+          <li><a href="#featured-work" class="nav-item nav-link text-white txt" onclick="closeNavMenu()">Featured Work</a></li>
           <li><a href="#projects" class="nav-item nav-link text-white txt" onclick="closeNavMenu()">Earlier projects</a></li>
+          <li><a href="#writing" class="nav-item nav-link text-white txt" onclick="closeNavMenu()">Writing</a></li>
           <li><a href="#about" class="nav-item nav-link text-white txt" onclick="closeNavMenu()">About</a></li>
           <li><a href="#contact" class="nav-item nav-link text-white txt" onclick="closeNavMenu()">Contact</a></li>
         </ul>
@@ -266,6 +270,24 @@
             <button type="button" class="mobile-carousel-dot active" data-slide="0" aria-label="Show Reptrack project"></button>
             <button type="button" class="mobile-carousel-dot" data-slide="1" aria-label="Show full-stack to-do project"></button>
           </div>
+        </div>
+      </section>
+
+      <!-- Writing -->
+      <section id="writing" class="writing-section">
+        <div class="container">
+          <h2>WRITING</h2>
+          <div class="writing-carousel" id="writingCarousel" tabindex="0" aria-label="Recent Hashnode articles">
+            <div class="writing-slide" id="writingSlide" aria-live="polite">
+              <p class="writing-status" id="writingStatus" role="status">Loading latest posts...</p>
+            </div>
+            <div class="writing-controls">
+              <button type="button" id="writingPrevious" aria-label="Previous article" disabled>Previous</button>
+              <span id="writingPosition" aria-live="polite"></span>
+              <button type="button" id="writingNext" aria-label="Next article" disabled>Next</button>
+            </div>
+          </div>
+          <a class="writing-all-link" href="https://abhimurali.hashnode.dev/" target="_blank" rel="noopener noreferrer">View all posts</a>
         </div>
       </section>
       

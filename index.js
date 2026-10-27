@@ -363,3 +363,128 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize with small delay to ensure DOM is ready
     setTimeout(updateCarousel, 100);
 });
+
+// Hashnode writing carousel
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('writingCarousel');
+    const slide = document.getElementById('writingSlide');
+    const previousButton = document.getElementById('writingPrevious');
+    const nextButton = document.getElementById('writingNext');
+    const position = document.getElementById('writingPosition');
+
+    if (!carousel || !slide || !previousButton || !nextButton || !position) return;
+
+    const fallbackPosts = [
+        {
+            title: 'GSoC 2025: Building a Modern Network Monitoring Interface with SwitchMap-NG',
+            url: 'https://abhimurali.hashnode.dev/gsoc-2025-building-a-modern-network-monitoring-interface-with-switchmap-ng'
+        },
+        {
+            title: 'Optimizing Metrics Pipelines: From Database Design to Frontend Performance',
+            url: 'https://abhimurali.hashnode.dev/from-database-design-to-frontend-performance'
+        },
+        {
+            title: 'Breathing New Life into a Legacy UI with Next.js 15 & Tailwind CSS v4',
+            url: 'https://abhimurali.hashnode.dev/modernize-flask-ui-nextjs-tailwind'
+        },
+        {
+            title: "What's New in SwitchMap-NG: Connection Charts, Frontend Testing, and a Config UI",
+            url: 'https://abhimurali.hashnode.dev/whats-new-in-switchmap-ng'
+        }
+    ];
+
+    let posts = [];
+    let currentIndex = 0;
+    let usingFallback = true;
+
+    function renderPost(post) {
+        slide.replaceChildren();
+
+        if (usingFallback) {
+            const fallbackNotice = document.createElement('p');
+            fallbackNotice.className = 'writing-status';
+            fallbackNotice.textContent = 'Live Hashnode posts are unavailable; showing saved articles.';
+            slide.append(fallbackNotice);
+        }
+
+        const heading = document.createElement('h3');
+        heading.textContent = post.title;
+
+        const metadata = document.createElement('p');
+        metadata.className = 'writing-metadata';
+
+        const publicationDate = document.createElement('time');
+        if (post.publishedAt && !Number.isNaN(Date.parse(post.publishedAt))) {
+            const date = new Date(post.publishedAt);
+            publicationDate.dateTime = date.toISOString();
+            publicationDate.textContent = date.toLocaleDateString(undefined, {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } else {
+            publicationDate.textContent = 'Date unavailable';
+        }
+        metadata.append(publicationDate);
+
+        if (Number.isFinite(post.readTimeInMinutes) && post.readTimeInMinutes > 0) {
+            const readTime = document.createElement('span');
+            readTime.textContent = `${post.readTimeInMinutes} min read`;
+            metadata.append(' · ', readTime);
+        }
+
+        const brief = document.createElement('p');
+        brief.className = 'writing-brief';
+        brief.textContent = post.brief || 'Read this article on Hashnode.';
+
+        const link = document.createElement('a');
+        link.href = post.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'Read on Hashnode';
+
+        slide.append(heading, metadata, brief, link);
+        position.textContent = `${currentIndex + 1} of ${posts.length}`;
+        previousButton.disabled = posts.length < 2;
+        nextButton.disabled = posts.length < 2;
+    }
+
+    function showPost(index) {
+        if (posts.length === 0) return;
+        currentIndex = (index + posts.length) % posts.length;
+        renderPost(posts[currentIndex]);
+    }
+
+    previousButton.addEventListener('click', () => showPost(currentIndex - 1));
+    nextButton.addEventListener('click', () => showPost(currentIndex + 1));
+
+    carousel.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            showPost(currentIndex - 1);
+        } else if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            showPost(currentIndex + 1);
+        }
+    });
+
+    let touchStartX = null;
+    carousel.addEventListener('touchstart', (event) => {
+        touchStartX = event.changedTouches[0].clientX;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', (event) => {
+        if (touchStartX === null) return;
+        const distance = touchStartX - event.changedTouches[0].clientX;
+        touchStartX = null;
+        if (Math.abs(distance) < 50) return;
+        showPost(currentIndex + (distance > 0 ? 1 : -1));
+    }, { passive: true });
+
+    // Hashnode now gates GraphQL reads behind Pro, so this static page uses the requested fallback.
+    posts = fallbackPosts.map((post) => ({
+        ...post,
+        brief: 'Read the full article on Hashnode.'
+    }));
+    showPost(0);
+});
