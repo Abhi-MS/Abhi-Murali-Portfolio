@@ -340,6 +340,21 @@ p, h3 {
     color: rgba(246, 244, 241, 0.9);
 }
 
+.hero-title-line {
+    font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+    color: #e6a876;
+    line-height: 1.35;
+    margin-bottom: 0.5rem;
+}
+
+.hero-sub-line {
+    font-size: 1rem;
+    color: rgba(246, 244, 241, 0.78);
+    letter-spacing: 0.04rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+}
+
 /* Buttons & Elements */
 .photo {
     border-radius: 50%;
