@@ -21,68 +21,6 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Custom dropdown functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const dropdownSelected = document.getElementById('dropdownSelected');
-    const dropdownOptions = document.getElementById('dropdownOptions');
-    const selectedText = document.querySelector('.selected-text');
-    const hiddenInput = document.getElementById('subject');
-    const options = document.querySelectorAll('.dropdown-option');
-
-    // Only proceed if dropdown elements exist
-    if (dropdownSelected && dropdownOptions && selectedText && hiddenInput) {
-        // Toggle dropdown
-        dropdownSelected.addEventListener('click', function() {
-            dropdownSelected.classList.toggle('active');
-            dropdownOptions.classList.toggle('show');
-        });
-
-        // Handle option selection
-        options.forEach(option => {
-            option.addEventListener('click', function() {
-                const value = this.getAttribute('data-value');
-                const text = this.textContent;
-                
-                selectedText.textContent = text;
-                selectedText.classList.remove('dropdown-placeholder');
-                hiddenInput.value = value;
-                
-                dropdownSelected.classList.remove('active');
-                dropdownOptions.classList.remove('show');
-            });
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.custom-dropdown')) {
-                dropdownSelected.classList.remove('active');
-                dropdownOptions.classList.remove('show');
-            }
-        });
-
-        // Set initial placeholder state
-        selectedText.classList.add('dropdown-placeholder');
-    }
-});
-
-// Contact method click handlers
-document.addEventListener('DOMContentLoaded', function() {
-    const contactMethods = document.querySelectorAll('.contact-method');
-    
-    contactMethods.forEach(method => {
-        method.addEventListener('click', function() {
-            const action = this.getAttribute('data-action');
-            const url = this.getAttribute('data-url');
-            
-            if (action === 'email') {
-                window.location.href = url;
-            } else if (action === 'link') {
-                window.open(url, '_blank');
-            }
-        });
-    });
-});
-
 // Contact form submission handler
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.querySelector('.contact-form');
@@ -116,15 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Clear the form
                     contactForm.reset();
-                    
-                    // Reset dropdown to placeholder state
-                    const selectedText = document.querySelector('.selected-text');
-                    const hiddenInput = document.getElementById('subject');
-                    if (selectedText && hiddenInput) {
-                        selectedText.textContent = 'Choose your topic...';
-                        selectedText.classList.add('dropdown-placeholder');
-                        hiddenInput.value = '';
-                    }
                 } else {
                     throw new Error('Network response was not ok');
                 }

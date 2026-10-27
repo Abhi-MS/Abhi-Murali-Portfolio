@@ -820,6 +820,8 @@ header.scrolled {
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     cursor: pointer;
+    color: inherit;
+    text-decoration: none;
 }
 
 .contact-method:hover {
@@ -3003,4 +3005,14 @@ textarea {
         min-width: 88px;
         padding-inline: 0.7rem;
     }
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid #e6a876 !important;
+    outline-offset: 3px;
 }
